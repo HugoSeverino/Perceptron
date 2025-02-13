@@ -81,7 +81,7 @@ Nous implémentons quatre fonctions d’activation différentes :
    \text{step}(z) = 
    \begin{cases} 
       1 & \text{si } z \ge 0 \\ 
-      0 & \text{sinon} 
+      0 & \text{sinon}
    \end{cases}
    $$
 
@@ -177,7 +177,7 @@ $$
 La sortie finale est :
 
 $$
-\hat{y} = \sigma_{\text{out}}\bigl(W_{\text{out}}^T \,[h_1 \; h_2] + b_{\text{out}}\bigr).
+\hat{y} = \sigma_{\text{out}}\!\bigl(W_{\text{out}}^T [\,h_1 \; h_2\,] + b_{\text{out}}\bigr).
 $$
 
 On réalise alors la rétropropagation en dérivant d’abord par rapport aux poids de la couche de sortie, puis en rétropropageant la partie de l’erreur attribuable à chacun des deux perceptrons parallèles.
@@ -205,6 +205,7 @@ Cela permet de **visualiser** l’effet de la fonction d’activation et du type
 2. **Installer les dépendances** si besoin :
    ```bash
    pip install numpy matplotlib scikit-learn
+
 
 
 
