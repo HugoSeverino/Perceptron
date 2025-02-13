@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler
 # --------------------------
 # Chargement et prétraitement des données
 # --------------------------
-iris = load_iris()               # Chargement du dataset Iris (150 échantillons, 4 features, 3 classes)
+iris = load_iris()               # Chargement du dataset Iris (1100 échantillons, 4 features, 3 classes)
 X = iris.data                    # Récupération des features (longueur/largeur sépales, longueur/largeur pétales)
 y = iris.target                  # Récupération des labels (classes 0,1,2)
 
@@ -227,7 +227,7 @@ class ParallelPerceptronNetwork:
     """
     Réseau composé de deux perceptrons en parallèle, suivis d'un perceptron de sortie.
     """
-    def __init__(self, input_size, activation1, activation2, activation_output, learning_rate=0.01, epochs=10):
+    def __init__(self, input_size, activation1, activation2, activation_output, learning_rate=0.01, epochs=100):
         """
         Initialise :
           - perceptron1 : 1er perceptron
@@ -343,7 +343,7 @@ for i, activation in enumerate(['step', 'sigmoid', 'tanh', 'relu']):
     # 🔵 Perceptron Simple
     # ----------
     perceptron = Perceptron(2, activation, 0.01)          # Initialise un perceptron simple
-    train_acc, test_acc = perceptron.fit(X_train, y_train, X_test, y_test, 30)  # Entraînement
+    train_acc, test_acc = perceptron.fit(X_train, y_train, X_test, y_test, 100)  # Entraînement
 
     # Trace la frontière de décision du perceptron simple
     plot_decision_boundary(perceptron, X_pca, y, f'Perceptron Simple ({activation})', axs1[0, i])
@@ -356,7 +356,7 @@ for i, activation in enumerate(['step', 'sigmoid', 'tanh', 'relu']):
     # ----------
     # 🔴 Perceptron en Série
     # ----------
-    model_series = TwoLayerPerceptron(2, 1, activation, 'sigmoid', 0.01, 30)  # 1 neurone caché, activation sortie = sigmoid
+    model_series = TwoLayerPerceptron(2, 1, activation, 'sigmoid', 0.01, 100)  # 1 neurone caché, activation sortie = sigmoid
     model_series.fit(X_train, y_train, X_test, y_test)
 
     # Trace la frontière de décision du perceptron en série
@@ -370,7 +370,7 @@ for i, activation in enumerate(['step', 'sigmoid', 'tanh', 'relu']):
     # ----------
     # 🟠 Perceptron en Parallèle
     # ----------
-    model_parallel = ParallelPerceptronNetwork(2, activation, activation, 'sigmoid', 0.01, 30)
+    model_parallel = ParallelPerceptronNetwork(2, activation, activation, 'sigmoid', 0.01, 100)
     model_parallel.fit(X_train, y_train, X_test, y_test)
 
     # Trace la frontière de décision du perceptron en parallèle
