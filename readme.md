@@ -78,11 +78,13 @@ Nous implémentons quatre fonctions d’activation différentes :
 1. **Step** :
 
    $$
+
    \text{step}(z) = 
    \begin{cases} 
       1 & \text{si } z \ge 0 \\ 
       0 & \text{sinon}
    \end{cases}
+   
    $$
 
 2. **Sigmoid** :
